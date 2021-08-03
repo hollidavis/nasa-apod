@@ -1,26 +1,29 @@
 <template>
-  <div class="picture row">
-<div class="col-12">
-  <h3>{{picture.title}} - {{picture.date}}</h3>
-  <img :src="picture.img" :alt="picture.title">
-  <p>{{picture.explanation}}</p>
-</div>
+  <div class="picture col-12">
+    <div class="row">
+      <div class="col-md-9">
+        <img :src="picture.img" :alt="picture.title" class="img-fluid" />
+      </div>
+      <div class="col-md-3">
+        <h3>{{ picture.date }} - {{ picture.title }}</h3>
+        <p>{{ picture.explanation }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
-import { reactive } from 'vue';
-import { Picture } from '../models/Picture';
-import { picturesService } from '../services/PicturesService';
+import { computed, reactive } from "vue";
+import { picturesService } from "../services/PicturesService";
+import { AppState } from "../AppState";
 export default {
   name: "Picture",
-  props: { picture:{type: Picture, required: true}},
   setup() {
-    const state = reactive({
-    });
+    const state = reactive({});
     return {
       state,
+      picture: computed(() => AppState.picture),
       getPicture() {
         picturesService.getPicture();
       },
@@ -32,4 +35,7 @@ export default {
 
 
 <style scoped>
+.img-fluid {
+  width: 100%;
+}
 </style>

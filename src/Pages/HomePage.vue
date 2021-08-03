@@ -1,5 +1,5 @@
 <template>
-  <div class="component container-fluid">
+  <div class="HomePage container-fluid">
     <div class="row">
       <h2 class="col-12">Nasa's Astronomy Picture of the Day</h2>
     </div>
@@ -27,7 +27,4 @@ export default {
 
 
 <style scoped>
-.img-fluid {
-  height: 5vh;
-}
 </style>
