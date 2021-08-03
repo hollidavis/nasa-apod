@@ -4,7 +4,7 @@
       <h2 class="col-12">Nasa's Astronomy Picture of the Day</h2>
     </div>
     <div class="row">
-      <Picture />
+      <APOD />
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
 
 <script>
 import { reactive } from "@vue/reactivity";
-import Picture from "../components/Picture.vue";
+import APOD from "../components/APOD.vue";
 export default {
   name: "HomePage",
   setup() {
@@ -21,7 +21,7 @@ export default {
       state,
     };
   },
-  components: { Picture },
+  components: { APOD },
 };
 </script>
 

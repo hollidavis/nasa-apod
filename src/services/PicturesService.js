@@ -3,9 +3,9 @@ import { Picture } from "../models/Picture"
 import { nasaApi } from "./AxiosService"
 
 class PicturesService{
-  async getPicture(){
+  async getPicture(query){
     try {
-      const res = await nasaApi.get('?api_key=roWnpkkAZnipBPHr7FjAfhv0ChFGNOVZ9bNKdUBL')
+      const res = await nasaApi.get('apod?api_key=roWnpkkAZnipBPHr7FjAfhv0ChFGNOVZ9bNKdUBL&date=' + query)
       console.log(res.data)
       AppState.picture = res.data(picture => new Picture(picture))
     } catch (error) {
@@ -13,4 +13,4 @@ class PicturesService{
     }
   }
 }
-export const pictureService = new PicturesService()
+export const picturesService = new PicturesService()

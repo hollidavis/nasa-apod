@@ -1,20 +1,29 @@
 <template>
-  <div class="picture"></div>
+  <div class="picture row">
+<div class="col-12">
+  <h3>{{picture.title}} - {{picture.date}}</h3>
+  <img :src="picture.img" :alt="picture.title">
+  <p>{{picture.explanation}}</p>
+</div>
+  </div>
 </template>
 
 
 <script>
-import { reactive } from "@vue/reactivity";
-import { AppState } from "../AppState";
-import { computed } from "@vue/runtime-core";
+import { reactive } from 'vue';
+import { Picture } from '../models/Picture';
+import { picturesService } from '../services/PicturesService';
 export default {
   name: "Picture",
+  props: { picture:{type: Picture, required: true}},
   setup() {
     const state = reactive({
-      picture: computed(() => AppState.picture),
     });
     return {
       state,
+      getPicture() {
+        picturesService.getPicture();
+      },
     };
   },
   components: {},
@@ -22,5 +31,5 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style scoped>
 </style>
